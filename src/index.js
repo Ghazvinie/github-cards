@@ -7,7 +7,11 @@ class Card extends React.Component {
   render() {
     return ( 
       <div className="github-profile">
-        One Github Profile...
+        <img src="https://res.cloudinary.com/stealthman22/image/upload/v1586308024/new-portfolio/hero/time-lapse-photography-of-waterfalls-during-sunset-210186.jpg" alt="null" />
+        <div className="info">
+          <div className="name">Name here...</div>
+          <div className="company">Company Here...</div>
+        </div>
       </div>
     );
   }

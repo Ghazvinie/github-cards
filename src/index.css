@@ -15,18 +15,20 @@ code {
 
 .github-profile {
 	margin: 1rem;
-  img {
-    width: 75px;
-  }
+}
+img {
+  width: 75px;
+}
   .info {
     display: inline-block;
     margin-left: 12px;
+  }
 		.name {
     	font-size: 1.25rem;
       font-weight: bold;
     }
-  }
-}
+  
+
 
 form {
 	border: thin solid #ddd;
