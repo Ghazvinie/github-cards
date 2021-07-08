@@ -9,7 +9,6 @@ const testData = [
   { name: "Sebastian Markbåge", avatar_url: "https://avatars2.githubusercontent.com/u/63648?v=4", company: "Facebook" },
 ];
 
-
 class Card extends React.Component {
   render() {
     return this.props.data.map(profile => {
@@ -32,7 +31,6 @@ const CardList = (props) => (
   </div>
 )
 
-
 class App extends React.Component {
   render() {
     return (
@@ -49,9 +47,4 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
-
