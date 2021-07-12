@@ -27,24 +27,28 @@ class Card extends React.Component {
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.userNameInput = React.createRef();
-    this.handleSubmit = (event) => {
+    // this.userNameInput = React.createRef();
+    this.handleSubmit = async (event) => {
       event.preventDefault();
-      console.log(this.userNameInput.current.value)
-    }
+      const res = await fetch(`https://api.github.com/users/${this.state.userName}`, {
+        method: 'get'
+      });
+      const data = await res.json();
+      console.log(data)
+    };
     this.state = {
       userName: ''
     };
   }
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   console.log(this)
 
-  // }
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="GitHub username" ref={this.userNameInput} value={this.state.userName} onChange={event => this.setState({ userName: event.target.value })}></input>
+        <input type="text"
+          placeholder="GitHub username"
+          // ref={this.userNameInput} 
+          value={this.state.userName}
+          onChange={event => this.setState({ userName: event.target.value })}></input>
         <button>Add Card</button>
       </form>
     );
