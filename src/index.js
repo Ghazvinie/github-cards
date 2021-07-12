@@ -24,6 +24,10 @@ class Card extends React.Component {
   }
 }
 
+class Form extends React.Component {
+
+}
+
 const CardList = (props) => (
   <div>
     {testData.map(profile => <Card {...profile} />)}
