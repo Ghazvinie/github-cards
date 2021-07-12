@@ -11,7 +11,7 @@ const testData = [
 
 class Card extends React.Component {
   render() {
-    return this.props.data.map(profile => {
+    const profile = this.props;
       return (
         <div className="github-profile">
           <img src={profile.avatar_url} alt="null" />
@@ -21,15 +21,14 @@ class Card extends React.Component {
           </div>
         </div>
       );
-    })
   }
 }
 
 const CardList = (props) => (
   <div>
-    <Card data={testData}/>
+    {testData.map(profile => <Card {...profile} />)}
   </div>
-)
+);
 
 class App extends React.Component {
   render() {
