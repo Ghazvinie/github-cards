@@ -34,7 +34,7 @@ class Form extends React.Component {
         method: 'get'
       });
       const data = await res.json();
-      console.log(data)
+      this.props.onSubmit(data)
     };
     this.state = {
       userName: ''
@@ -67,12 +67,18 @@ class App extends React.Component {
     this.state = {
       profiles: testData
     };
+    this.addNewProfile = (profileData) => {
+      console.log(profileData)
+      this.setState(prevState => ({
+        profiles: [...prevState.profiles, profileData]
+      }))
+    }
   }
   render() {
     return (
       <div>
         <div className="header">{this.props.title}</div>
-        <Form />
+        <Form onSubmit={this.addNewProfile}/>
         <CardList profiles={this.state.profiles} />
       </div>
     );
