@@ -25,7 +25,14 @@ class Card extends React.Component {
 }
 
 class Form extends React.Component {
-
+  render (){
+    return (
+      <form>
+        <input type="text" placeholder="GitHub username"></input>
+        <button>Add Card</button>
+      </form>
+    )
+  }
 }
 
 const CardList = (props) => (
@@ -40,6 +47,7 @@ class App extends React.Component {
       <div>
         <div className="header">{this.props.title}</div>
         <CardList />
+        <Form />
       </div>
     );
   }
