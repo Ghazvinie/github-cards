@@ -34,7 +34,12 @@ class Form extends React.Component {
         method: 'get'
       });
       const data = await res.json();
-      this.props.onSubmit(data)
+      if (data.message === 'Not Found') {
+        this.props.onError('User Not Found')
+      } else {
+        this.props.onSubmit(data)
+      }
+      this.setState({ userName: '' });
     };
     this.state = {
       userName: ''
@@ -50,6 +55,7 @@ class Form extends React.Component {
           value={this.state.userName}
           onChange={event => this.setState({ userName: event.target.value })}></input>
         <button>Add Card</button>
+        <div>{this.props.error}</div>
       </form>
     );
   }
@@ -57,7 +63,7 @@ class Form extends React.Component {
 
 const CardList = (props) => (
   <div>
-    {props.profiles.map(profile => <Card {...profile} />)}
+    {props.profiles.map(profile => <Card {...profile} key={profile.id} />)}
   </div>
 );
 
@@ -65,20 +71,24 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profiles: testData
+      profiles: [],
+      error: ''
     };
     this.addNewProfile = (profileData) => {
-      console.log(profileData)
       this.setState(prevState => ({
         profiles: [...prevState.profiles, profileData]
       }))
     }
+    this.handleError = (error) => {
+      this.setState({error})
+    }
   }
+
   render() {
     return (
       <div>
         <div className="header">{this.props.title}</div>
-        <Form onSubmit={this.addNewProfile}/>
+        <Form onSubmit={this.addNewProfile} onError={this.handleError} error={this.state.error} />
         <CardList profiles={this.state.profiles} />
       </div>
     );
