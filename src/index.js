@@ -45,7 +45,6 @@ class Form extends React.Component {
       userName: ''
     };
   }
-
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -83,7 +82,6 @@ class App extends React.Component {
       this.setState({error})
     }
   }
-
   render() {
     return (
       <div>
